@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR. KVL</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #050505;
+    color: #f5f5f5;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Мягкое свечение на фоне */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 900px; height: 900px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: .6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+  }
+
+  /* Тонкая рамка вокруг контента */
+  .frame {
+    position: relative;
+    padding: 80px 60px;
+    border: 1px solid #1e1e1e;
+    backdrop-filter: blur(2px);
+    animation: fadeUp 1.2s ease both;
+  }
+
+  .frame::before,
+  .frame::after {
+    content: '';
+    position: absolute;
+    width: 24px; height: 24px;
+    border: 1px solid #f5f5f5;
+  }
+  .frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .frame::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-size: clamp(56px, 14vw, 180px);
+    font-weight: 900;
+    letter-spacing: -3px;
+    line-height: .95;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #ffffff 0%, #666 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeUp 1.2s .1s ease both;
+  }
+
+  .divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #888, transparent);
+    margin: 40px auto;
+    animation: fadeUp 1.2s .2s ease both;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 20px 56px;
+    border: 1px solid #f5f5f5;
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: color .4s;
+    animation: fadeUp 1.2s .3s ease both;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f5f5f5;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s cubic-bezier(.7,0,.2,1);
+    z-index: -1;
+  }
+
+  .btn:hover::before { transform: scaleX(1); }
+  .btn:hover { color: #050505; }
+
+  footer {
+    position: fixed;
+    bottom: 28px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #444;
+    text-transform: uppercase;
+    animation: fadeUp 1.2s .5s ease both;
+  }
+
+  @media (max-width: 600px) {
+    .frame { padding: 60px 28px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="frame">
+    <h1>MR. KVL</h1>
+    <div class="divider"></div>
+    <a class="btn" href="https://vk.com/kvl" target="_blank">Перейти на канал</a>
+  </div>
+
+  <footer>© 2025 MR. KVL</footer>
+
+</body>
+</html>
